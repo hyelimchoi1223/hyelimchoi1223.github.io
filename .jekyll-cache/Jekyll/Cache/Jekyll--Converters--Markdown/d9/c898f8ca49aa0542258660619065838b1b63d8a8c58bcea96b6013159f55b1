@@ -1,0 +1,58 @@
+I"S<h1 id="pegasuspre-training-with-extracted-gap-sentences-for-abstractive-summarization">PEGASUS:Pre-training with Extracted Gap-sentences for Abstractive Summarization</h1>
+
+<p><a href="https://arxiv.org/pdf/1912.08777.pdf">논문 URL</a></p>
+
+<h2 id="abstract">Abstract</h2>
+<p>추상적 요약(Abstractive Summarization)에 맞는 사전학습 모델인 PEGASUS를 제안한다. PEGASUS 모델은 트랜스포머(Transformer) 기반의 인코더-디코더 구조이고, 사전 학습을 위한 새로운 기법인 GSG도 함께 제안한다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/63278762/184355012-a2e66abe-7c5d-4444-9956-81320a21aa9d.png" alt="image" /></p>
+
+<p>기본 구조는 표준 트랜스포머 인코더-디코더 구조이다.  위의 그림에서는 문장 1개는 [MASK1]로 마스킹 되어 Target 텍스트 생성에 사용하고, 다른 두 문장에서 랜덤 한 토큰을 [MASK2]로 마스킹 한다.</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<blockquote>
+  <p>추상적 요약이란?  <br />
+기존 문장에서 요약문을 뽑아내는 것이 아닌, 요약 내용을 담은 새로운 문장을 생성하는 것</p>
+</blockquote>
+
+<p>이 논문에서는 아래와 같은 내용을 소개할 예정이다.</p>
+
+<p>​</p>
+<ol>
+  <li>
+    <p>추상적 요약을 위한 새로운 self-supervised 사전학습 모델과 Gap-Sentences Generation(GSG)를 제안하고, 문장을 선택하는 전략을 연구한다.</p>
+  </li>
+  <li>
+    <p>제안된 사전학습 모델이 넓은 범위의 Downstream에서도 좋은 성능을 내는지 평가한다.</p>
+  </li>
+  <li>
+    <p>fine-tuning 한 PEGASUS 모델이 label이 없는 큰 도메인에서 어떻게 좋은 성능을 달성하는지 소개한다.</p>
+  </li>
+  <li>
+    <p>모델을 검증하고, 인간 수준의 요약 성능을 보여주기 위해 사람 평가 연구를 진행한다. (XSum, CNN/DailyMail, Reddit TIFU 데이터 셋에서)</p>
+  </li>
+</ol>
+
+<h2 id="pre-training-objectives">Pre-training Objectives</h2>
+<p>(비교를 위해 BERT의 masked-language model 방식을 함께 살펴보았다.)</p>
+
+<h3 id="gap-sentences-generation-gsg">Gap Sentences Generation (GSG)</h3>
+<ul>
+  <li>추상적 요약을 위해 제안된 새로운 방식의 self-supervised pre-training objective</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/63278762/184356377-e22fe230-1de7-4824-8daf-9f34efb6b569.gif" alt="image1" /></p>
+
+<ol>
+  <li>GSR(Gap Sentences Ratio)에 따라 문장을 선택하고 마스킹</li>
+  <li>선택된 문장을 연결하여 pseudo-요약문으로 만듦.</li>
+  <li>선택된 문장 위치에 [MASK1]토큰을 넣은 후 모델에 넣는다.</li>
+  <li>[MASK1] 토큰을 예측하는 방식으로 학습한다.</li>
+</ol>
+
+<blockquote>
+  <p>GSR이란?  <br />
+문서 내 전체 문장 개수 대비 선택된 문장의 개수 비율</p>
+</blockquote>
+:ET

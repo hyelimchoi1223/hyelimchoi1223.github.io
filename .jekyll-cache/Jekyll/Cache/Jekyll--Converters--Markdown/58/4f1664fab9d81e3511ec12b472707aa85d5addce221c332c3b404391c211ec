@@ -1,0 +1,18 @@
+I"�<h1 id="pegasuspre-training-with-extracted-gap-sentences-for-abstractive-summarization">PEGASUS:Pre-training with Extracted Gap-sentences for Abstractive Summarization</h1>
+
+<p><a href="https://arxiv.org/pdf/1912.08777.pdf">논문 URL</a></p>
+
+<h2 id="abstract">Abstract</h2>
+<p>추상적 요약(Abstractive Summarization)에 맞는 사전학습 모델인 PEGASUS를 제안한다. PEGASUS 모델은 트랜스포머(Transformer) 기반의 인코더-디코더 구조이고, 사전 학습을 위한 새로운 기법인 GSG도 함께 제안한다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/63278762/184355012-a2e66abe-7c5d-4444-9956-81320a21aa9d.png" alt="image" /></p>
+
+<p>기본 구조는 표준 트랜스포머 인코더-디코더 구조이다.  위의 그림에서는 문장 1개는 [MASK1]로 마스킹 되어 Target 텍스트 생성에 사용하고, 다른 두 문장에서 랜덤 한 토큰을 [MASK2]로 마스킹 한다.</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<blockquote>
+  <p>추상적 요약이란?  <br />
+기존 문장에서 요약문을 뽑아내는 것이 아닌, 요약 내용을 담은 새로운 문장을 생성하는 것</p>
+</blockquote>
+:ET
